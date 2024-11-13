@@ -22,6 +22,9 @@ while(numberOfRows){
     row.style.width = "512px";
     while(numberOfBoxes){
         const box = document.createElement("div");
+        box.classList.add("box");
+        box.style.padding = "0px";
+        box.style.margin = "0px";
         box.style.border = "1px solid green";
         box.style.display = "flex";
         box.style.height = "30px";
@@ -35,3 +38,13 @@ while(numberOfRows){
 }
 
 document.body.appendChild(container);
+
+const boxes = Array.from(document.querySelectorAll(".box"));
+
+boxes.forEach(function(elem) {
+    elem.addEventListener("mouseenter", function () {
+        elem.classList.add("paint");
+    });
+
+});
+console.log(boxes);
