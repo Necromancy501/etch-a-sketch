@@ -52,12 +52,19 @@ function createGrid(width, height){
     });
 }
 
+function randomAll(){
+    const boxes = Array.from(document.querySelectorAll(".box"));
+    boxes.forEach(function(elem) {
+            elem.style.backgroundColor = randomColor();    
+    });
+}
+
 const banner = document.createElement("div");
 banner.style.display = "flex";
 banner.style.flexFlow = "row nowrap";
 banner.style.justifyContent = "space-evenly";
 banner.style.alignItems = "center";
-banner.style.gap = "80px";
+banner.style.gap = "40px";
 
 const button = document.createElement("button");
 button.classList.add("new");
@@ -78,6 +85,16 @@ buttonFill.style.padding = "10px";
 buttonFill.style.borderRadius = "12px";
 
 banner.appendChild(buttonFill);
+
+const buttonDisco = document.createElement("button");
+buttonDisco.classList.add("disco");
+buttonDisco.textContent = ("Disco!!");
+buttonDisco.style.display = "flex";
+buttonDisco.style.fontSize = "30px";
+buttonDisco.style.padding = "10px";
+buttonDisco.style.borderRadius = "12px";
+
+banner.appendChild(buttonDisco);
 
 document.body.appendChild(banner);
 
@@ -101,10 +118,22 @@ buttonOnPage.addEventListener("click", () => {
 
 const buttonFillOnPage = document.querySelector(".fill");
 
-buttonFillOnPage.addEventListener("click", () => {
-    const boxes = Array.from(document.querySelectorAll(".box"));
-    boxes.forEach(function(elem) {
-            elem.style.backgroundColor = randomColor();    
-    });
-});
+buttonFillOnPage.addEventListener("click", randomAll);
 
+const buttonDiscoOnPage = document.querySelector(".disco");
+let discoInterval;
+let isDiscoOn = false;
+
+buttonDiscoOnPage.addEventListener("click", () => {
+    if (isDiscoOn) {
+        buttonDiscoOnPage.style.backgroundColor = "aquamarine";
+        clearInterval(discoInterval);
+        isDiscoOn = false;
+    }
+    else {
+        buttonDiscoOnPage.style.backgroundColor = "rgb(132, 172, 38)";
+        discoInterval = setInterval (randomAll, 100);
+        isDiscoOn = true;
+    }
+
+});
