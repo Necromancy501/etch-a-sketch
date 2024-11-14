@@ -46,24 +46,44 @@ function createGrid(width, height){
 
     boxes.forEach(function(elem) {
         elem.addEventListener("mouseenter", function () {
-            elem.classList.add("paint");
+            elem.style.backgroundColor = randomColor();    
         });
 
-});
+    });
 }
 
+const banner = document.createElement("div");
+banner.style.display = "flex";
+banner.style.flexFlow = "row nowrap";
+banner.style.justifyContent = "space-evenly";
+banner.style.alignItems = "center";
+banner.style.gap = "80px";
+
 const button = document.createElement("button");
+button.classList.add("new");
 button.textContent = ("New Grid");
 button.style.display = "flex";
 button.style.fontSize = "30px";
-button.style.padding = "10px";
+button.style.padding = "10px"; 
 button.style.borderRadius = "12px";
 
-document.body.appendChild(button);
+banner.appendChild(button);
+
+const buttonFill = document.createElement("button");
+buttonFill.classList.add("fill");
+buttonFill.textContent = ("Fill All!");
+buttonFill.style.display = "flex";
+buttonFill.style.fontSize = "30px";
+buttonFill.style.padding = "10px";
+buttonFill.style.borderRadius = "12px";
+
+banner.appendChild(buttonFill);
+
+document.body.appendChild(banner);
 
 createGrid(16, 16);
 
-const buttonOnPage = document.querySelector("button");
+const buttonOnPage = document.querySelector(".new");
 
 buttonOnPage.addEventListener("click", () => {
     const number = prompt("Please enter a number. This will be the width and height of the new grid (16 by default)");
@@ -77,5 +97,14 @@ buttonOnPage.addEventListener("click", () => {
     else{
     createGrid(number, number);
     }
+});
+
+const buttonFillOnPage = document.querySelector(".fill");
+
+buttonFillOnPage.addEventListener("click", () => {
+    const boxes = Array.from(document.querySelectorAll(".box"));
+    boxes.forEach(function(elem) {
+            elem.style.backgroundColor = randomColor();    
+    });
 });
 

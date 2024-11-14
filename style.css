@@ -3,10 +3,6 @@
     font-family: 'Verdana', 'Helvetica', 'Times New Roman', sans-serif;
 }
 
-.paint {
-    background-color: rgb(239, 124, 243);
-}
-
 body {
     display: flex;
     flex-flow: column nowrap;
