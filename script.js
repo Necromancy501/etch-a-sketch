@@ -10,9 +10,10 @@ function createGrid(width, height){
     container.style.display = "flex";
     container.style.flexFlow = "column nowrap";
     container.style.width = "512px";
-    container.style.alignItems = "center";
+    container.style.height = "512px";
+    container.style.alignItems = "stretch";
     container.style.margin = "auto";
-    container.style.marginTop = "20px";
+    container.style.marginTop = "10px";
     container.style.border = "4px solid blue"; 
     container.style.borderRadius = "7px";
 
@@ -21,6 +22,9 @@ function createGrid(width, height){
         row.style.display = "flex";
         row.style.flexFlow = "row nowrap";
         row.style.width = "512px";
+        row.style.alignItems = "stretch";
+        row.style.justifyContent = "space-around";
+        row.style.flex = "1 0 auto";
         while(numberOfBoxes){
             const box = document.createElement("div");
             box.classList.add("box");
@@ -28,7 +32,6 @@ function createGrid(width, height){
             box.style.margin = "0px";
             box.style.border = "1px solid green";
             box.style.display = "flex";
-            box.style.height = "30px";
             box.style.flex = "1 1 30px";
             row.appendChild(box);
             numberOfBoxes--;     
